@@ -89,13 +89,27 @@ class Contact
         $this->category_id = $category_id;
     }
 
+    public function getAllCategories()
+    {
+        try {
+            $query = "SELECT * FROM category";
+            $request = $this->connexion->prepare($query);
+            $request->execute();
 
+            $categories = $request->fetchAll(PDO::FETCH_ASSOC);
+            return $categories;
+
+        } catch (PDOException $pe) {
+            echo "Error: " . $pe->getMessage();
+            return [];
+        }
+    }
 
     function getAllContacts()
     {
         try {
 
-            $query = "SELECT * FROM contact";
+            $query = "SELECT contact.*, category.name AS category_name FROM contact LEFT JOIN category ON contact.category_id = category.id";
             $request = $this->connexion->prepare($query);
             $request->execute();
 
@@ -106,8 +120,31 @@ class Contact
             echo "Erreur : " . $pe->getMessage();
         }
 
+    }
 
+    public function addContact()
+    {
+        try {
+            $query = "INSERT INTO contact (first_name, last_name, phone, email, address, category_id) 
+                      VALUES (:first_name, :last_name, :phone, :email, :address, :category_id)";
 
+            $request = $this->connexion->prepare($query);
+
+            $request->bindParam(':first_name', $this->first_name, PDO::PARAM_STR);
+            $request->bindParam(':last_name', $this->last_name, PDO::PARAM_STR);
+            $request->bindParam(':phone', $this->phone, PDO::PARAM_STR);
+            $request->bindParam(':email', $this->email, PDO::PARAM_STR);
+            $request->bindParam(':address', $this->address, PDO::PARAM_STR);
+            $request->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
+
+            $request->execute();
+
+            return true;
+
+        } catch (PDOException $pe) {
+            echo "Erreur : " . $pe->getMessage();
+            return false;
+        }
     }
 }
 

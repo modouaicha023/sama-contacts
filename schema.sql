@@ -13,3 +13,10 @@ CREATE TABLE contact (
     category_id INT,
     CONSTRAINT fk_contact_category FOREIGN KEY (category_id) REFERENCES category(id)
 );
+
+INSERT INTO `category`( `name`) VALUES ('Client');
+INSERT INTO `category`( `name`) VALUES ('Companie');
+INSERT INTO `category`( `name`) VALUES ('Amis');
+INSERT INTO `category`( `name`) VALUES ('Personels');
+INSERT INTO `category`( `name`) VALUES ('Collegues');
+INSERT INTO `category`( `name`) VALUES ('Autres');

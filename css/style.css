@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    color: aliceblue;
 }
 
 
@@ -35,7 +35,8 @@ header {
 
 main {
     grid-area: main;
-
+    background-color: rgb(70, 67, 67);
+    color: aliceblue;
 }
 
 aside {
@@ -57,6 +58,12 @@ a {
     text-decoration: none;
     color: rgb(128, 183, 231);
 }
+
+select {
+    background-color: rgb(0, 0, 0) !important;
+
+}
+
 
 /* End Grid Layout */
 
@@ -165,6 +172,7 @@ a {
 
 #main #sec-1 .container-add-filter {
     display: flex;
+    position: relative;
     gap: 20px;
 }
 
@@ -180,7 +188,8 @@ a {
 #main #sec-1 #add-btn {
     display: flex;
     background-color: rgb(107, 167, 251);
-    color: black;
+    color: black !important;
+    font-weight: bold;
     align-items: center;
     gap: 10px;
     padding: 5px 20px;
@@ -189,10 +198,18 @@ a {
     outline: none;
 }
 
+#add-btn span {
+    color: black;
+}
+
+#add-btn:hover {
+    opacity: .6;
+}
+
 
 #main #sec-2 {
     flex: 80%;
-    padding: 10px;
+    padding: 20px;
     color: aliceblue !important;
 }
 
@@ -200,7 +217,6 @@ table {
     border-collapse: collapse;
     border-spacing: 0px;
     padding-top: 20px;
-    gap: 30px;
 
 }
 
@@ -208,39 +224,106 @@ table {
 td {
     background-color: rgb(32, 32, 32) !important;
     text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
 }
 
+table,
 th,
+tr,
 td {
-    border: 1px solid rgba(0, 0, 0, 0.4);
+    width: fit-content !important;
+    min-width: 100%;
 }
+
+/* Pop up */
 
 #sec-3 {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 50%;
-    right: 10%;
-    width: 400px;
-    height: 50%;
-    background-color: rgb(0, 0, 0);
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 70%;
+    height: 70%;
+    max-width: 600px;
+    max-height: 400px;
+    overflow-y: scroll;
+    background-color: rgb(15, 14, 14);
     border-radius: 20px;
-
-    display: flex;
-    flex-direction: column;
     gap: 30px;
     padding-top: 20px;
+    
 }
 
-.close {
+#close {
     position: absolute;
-    right: 20px;
+    display: inline;
+    top: 30px;
+    right: 30px;
+}
+
+
+#close:hover {
+    opacity: .7;
+    cursor: pointer;
 }
 
 #sec-3 h1 {
     text-align: center;
+    margin-top: 50px;
 }
 
 #sec-3 form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#sec-3 form label {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    border-radius: 10px;
+    width: 80%;
+    height: 20px;
+    font-size: large;
+    font-weight: bold;
+    color: lightblue;
+    /* gap: 10px; */
+    margin-top: 50px;
+
+}
+
+#sec-3 form label input {
+    background-color: rgb(32, 32, 32);
+    padding: 5px;
+    border-radius: 10px;
+    height: 100px;
+    border: 1px solid aliceblue;
+    outline: none;
+}
+
+#sec-3 form label select {
+    background-color: rgb(32, 32, 32);
+    padding: 10px;
+    border-radius: 10px;
+    height: 100px;
+    border: 1px solid aliceblue;
+    outline: none;
+
+}
+
+#sumbit-btc {
+    width: 50%;
+    background-color: lightblue;
+    color: rgb(32, 32, 32);
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid aliceblue;
+    outline: none;
+    margin: 50px 0px;
+
 }
