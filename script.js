@@ -1,3 +1,6 @@
+let categories;
+let formDataUpdate = {};
+let contactData;
 $(document).ready(function () {
     const table = $('#contactsTable').DataTable({
         responsive: true,
@@ -19,7 +22,8 @@ $(document).ready(function () {
         type: 'GET',
         data: { action: 'getCategories' },
         dataType: 'json',
-        success: function (categories) {
+        success: function (response) {
+            categories = response;
             const categoryDropdown = $('#category_id');
             categoryDropdown.empty();
             $.each(categories, function (index, category) {
@@ -27,6 +31,7 @@ $(document).ready(function () {
                     value: category.id,
                     text: category.name
                 }));
+
             });
         },
         error: function (error) {
@@ -37,27 +42,27 @@ $(document).ready(function () {
 
     $('#contactsTable tbody').on('click', 'tr', function () {
 
-        const data = table.row(this).data();
-        console.log(data);
-        displayContactDetails(data);
+        contactData = table.row(this).data();
+        console.log(contactData);
+        displayContactDetails(contactData);
     });
 
     $('#add-btn').on('click', function () {
         $('#sec-3').css('display', 'block');
+        $('#sec-4').css('display', 'none');
     });
+
     $('#cancel-btc').on('click', function () {
         $('#addContactForm')[0].reset();
         $('#sec-3').css('display', 'none');
     });
-    
+
     $('#close').on('click', function () {
         $('#sec-3').css('display', 'none');
         $('#addContactForm')[0].reset();
     });
 
-    $('#edit-btc').on('click', function () {
-        $('#sec-3').css('display', 'none');
-    });
+
 
     $('#close-details').on('click', function () {
         $('#sec-4').css('display', 'none');
@@ -76,14 +81,11 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status === 'success') {
                     $('#addContactForm')[0].reset();
-
                     table.ajax.reload();
                     $('#sec-3').css('display', 'none');
 
-
-                    // alert(response.message);
                 } else {
-                    // alert(response.message);
+                    alert(response.message);
                 }
             },
             error: function (xhr, status, error) {
@@ -92,20 +94,71 @@ $(document).ready(function () {
         });
     });
 
+
     function displayContactDetails(contactData) {
-        $('#first_name-details').text(contactData.first_name);
-        $('#last_name-details').text(contactData.last_name);
-        $('#phone-details').text(contactData.phone);
-        $('#email-details').text(contactData.email);
-        $('#address-details').text(contactData.address);
-        $('#category_id-details').text(contactData.category_name);
+        $('#first_name-details').val(contactData.first_name);
+        $('#last_name-details').val(contactData.last_name);
+        $('#phone-details').val(contactData.phone);
+        $('#email-details').val(contactData.email);
+        $('#address-details').val(contactData.address);
 
-        $('#edit-btc').on('click', function () {
+        const categoryDropdownDetails = $('#category_id-details');
+        categoryDropdownDetails.empty(); // Clear existing options
 
+        $.each(categories, function (index, category) {
+            const option = $('<option>', {
+                value: category.id,
+                text: category.name
+            });
+            categoryDropdownDetails.append(option);
         });
 
+        categoryDropdownDetails.val(contactData.category_id);
+        $('#category_id-details option[value="' + contactData.category_id + '"]').prop('selected', true);
+
+        $('#sec-3').css('display', 'none');
         $('#sec-4').css('display', 'block');
     }
 
-    
+    $('#editContactForm').on('submit', function (e) {
+        e.preventDefault();
+        const contactId = contactData.id; /* Get the contact ID */
+        const formDataArray = $(this).serializeArray();
+        // Convert the array to an object
+
+        formDataArray.forEach(function (field) {
+            formDataUpdate[field.name] = field.value;
+        });
+        editContact(contactId);
+    });
+
+    function editContact(contactId) {
+
+        $.ajax({
+            url: 'ajax.php',
+            type: 'POST',
+            data: {
+                contact_id: contactId,
+                formData: formDataUpdate,
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    table.ajax.reload();
+                    $('#sec-4').css('display', 'none');
+                    console.log("atfer");
+                    console.log(formDataUpdate);
+
+                } else {
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX error:", status, error);
+            }
+        });
+
+    }
+
+
+
 });

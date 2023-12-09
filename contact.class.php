@@ -138,6 +138,33 @@ class Contact
             $request->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
 
             $request->execute();
+            return true;
+
+        } catch (PDOException $pe) {
+            echo "Erreur : " . $pe->getMessage();
+            return false;
+        }
+    }
+    public function editContact($contactId)
+    {
+        try {
+            $query = "UPDATE contact 
+                      SET first_name = :first_name, last_name = :last_name, 
+                          phone = :phone, email = :email, address = :address, 
+                          category_id = :category_id
+                      WHERE id = :contact_id";
+
+            $request = $this->connexion->prepare($query);
+
+            $request->bindParam(':first_name', $this->first_name, PDO::PARAM_STR);
+            $request->bindParam(':last_name', $this->last_name, PDO::PARAM_STR);
+            $request->bindParam(':phone', $this->phone, PDO::PARAM_STR);
+            $request->bindParam(':email', $this->email, PDO::PARAM_STR);
+            $request->bindParam(':address', $this->address, PDO::PARAM_STR);
+            $request->bindParam(':category_id', $this->category_id, PDO::PARAM_INT);
+            $request->bindParam(':contact_id', $contactId, PDO::PARAM_INT);
+
+            $request->execute();
 
             return true;
 

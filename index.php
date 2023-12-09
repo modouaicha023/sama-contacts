@@ -67,7 +67,7 @@
         <section id="sec-3">
             <span class="material-symbols-outlined" id="close">close</span>
             <h1>Ajouter Nouveau Contact</h1>
-            <form id="addContactForm" action="ajax.php" method="POST">
+            <form id="addContactForm" method="POST">
                 <label for="first_name">Prénom:
                     <input type="text" id="first_name" name="first_name" required>
                 </label>
@@ -100,39 +100,54 @@
         <section id="sec-4">
             <span class="material-symbols-outlined" id="close-details">close</span>
             <h1>Détails du Contact</h1>
-            <div class="container-contact">
-                <div class="contact-details-item">
-                    <p>Prénom:</p>
-                    <span id="first_name-details"></span>
+            <form id="editContactForm" method="POST">
+                <label class=".contact-details-item" for="first_name">
+                    <p>
+                        Prénom:
+                    </p>
+                    <input type="text" id="first_name-details" name="first_name-details" required>
+                </label>
+
+                <label class=".contact-details-item" for="last_name">
+                    <p>
+                        Nom:
+                    </p>
+                    <input type="text" id="last_name-details" name="last_name-details" required>
+                </label>
+
+                <label class=".contact-details-item" for="phone">
+                    <p>
+                        Téléphone:
+                    </p>
+                    <input type="text" id="phone-details" name="phone-details" required>
+                </label>
+
+                <label class=".contact-details-item" for="email">
+                    <p>
+                        Email:
+                    </p>
+                    <input type="email" id="email-details" name="email-details" required>
+                </label>
+
+                <label class=".contact-details-item" for="address">
+                    <p>
+                        Addresse:
+                    </p>
+                    <input type="text" id="address-details" name="address-details" required>
+                </label>
+
+                <label class=".contact-details-item" for="category_id">
+                    <p>
+                        Categorie:
+                    </p>
+                    <select id="category_id-details" name="category_id-details" required></select>
+                </label>
+                <div class="button">
+                    <button type="submit" id="edit-btc">Editer Contact</button>
+                    <button type="button" id="cancel-btc-details">Annuler</button>
                 </div>
 
-                <div class="contact-details-item">
-                    <p>Nom:</p>
-                    <span id="last_name-details"></span>
-                </div>
-
-                <div class="contact-details-item">
-                    <p>Téléphone:</p>
-                    <span id="phone-details"></span>
-                </div>
-
-                <div class="contact-details-item">
-                    <p>Email:</p>
-                    <span id="email-details"></span>
-                </div>
-
-                <div class="contact-details-item">
-                    <p>Addresse:</p>
-                    <span id="address-details"></span>
-                </div>
-
-                <div class="contact-details-item">
-                    <p>Categorie:</p>
-                    <span id="category_id-details"></span>
-                </div>
-
-                <button id="edit-btc">Editer Contact</button>
-            </div>
+            </form>
         </section>
     </main>
     <aside id="aside">
