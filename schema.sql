@@ -8,7 +8,7 @@ CREATE TABLE contact (
     first_name VARCHAR(64) NOT NULL,
     last_name VARCHAR(64) NOT NULL,
     phone VARCHAR(15) NOT NULL,
-    address VARCHAR(32) NOT NULL,
+    address VARCHAR(200) NOT NULL,
     email VARCHAR(32) NOT NULL,
     category_id INT,
     CONSTRAINT fk_contact_category FOREIGN KEY (category_id) REFERENCES category(id)
