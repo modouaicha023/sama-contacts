@@ -30,7 +30,7 @@
         <nav>
             <ul>
                 <li><a href="index.php">Contacts</a></li>
-                <li><a href="index.php">Messages</a></li>
+                <li><a href="#">Others</a></li>
             </ul>
         </nav>
     </header>
@@ -47,7 +47,7 @@
                 </form>
                 <button type="button" id="add-btn">
                     <span class="material-symbols-outlined">person_add</span>
-                    Add new contact
+                    Ajouter Contact
                 </button>
 
             </div>
@@ -61,9 +61,7 @@
                         <th>Catégorie</th>
                     </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
+                <tbody></tbody>
             </table>
         </section>
         <section id="sec-3">
@@ -93,9 +91,48 @@
                 <label for="category_id">Category:
                     <select id="category_id" name="category_id" required></select>
                 </label>
-
-                <button type="submit" id="sumbit-btc">Add Contact</button>
+                <div class="button">
+                    <button type="submit" id="sumbit-btc">Enregistrer Contact</button>
+                    <button type="button" id="cancel-btc">Annuler</button>
+                </div>
             </form>
+        </section>
+        <section id="sec-4">
+            <span class="material-symbols-outlined" id="close-details">close</span>
+            <h1>Détails du Contact</h1>
+            <div class="container-contact">
+                <div class="contact-details-item">
+                    <p>First Name:</p>
+                    <span id="first_name-details"></span>
+                </div>
+
+                <div class="contact-details-item">
+                    <p>Last Name:</p>
+                    <span id="last_name-details"></span>
+                </div>
+
+                <div class="contact-details-item">
+                    <p>Phone:</p>
+                    <span id="phone-details"></span>
+                </div>
+
+                <div class="contact-details-item">
+                    <p>Email:</p>
+                    <span id="email-details"></span>
+                </div>
+
+                <div class="contact-details-item">
+                    <p>Address:</p>
+                    <span id="address-details"></span>
+                </div>
+
+                <div class="contact-details-item">
+                    <p>Category:</p>
+                    <span id="category_id-details"></span>
+                </div>
+
+                <button id="edit-btc">Editer Contact</button>
+            </div>
         </section>
     </main>
     <aside id="aside">
