@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Management</title>
+    <title>Sama-Contacts</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="./css/style.css">
@@ -26,7 +26,7 @@
 
 <body>
     <header id="header">
-        <div class="logo">My<span id="text-contacts">Contacts</span></div>
+        <div class="logo">Sama<span id="text-contacts">Contacts</span></div>
         <nav>
             <ul>
                 <li><a href="index.php">Contacts</a></li>
@@ -38,13 +38,13 @@
         <section id="sec-1">
             <h1>Listes of Contacts</h1>
             <div class="container-add-filter">
-                <form action="">
+                <!-- <form action="">
                     <select name="filter" id="filter">
                         <option value="last_name">Nom</option>
                         <option value="first_name">Prénom</option>
-                        <option value="category">Category</option>
+                        <option value="category">Catégorie</option>
                     </select>
-                </form>
+                </form> -->
                 <button type="button" id="add-btn">
                     <span class="material-symbols-outlined">person_add</span>
                     Ajouter Contact
@@ -66,17 +66,17 @@
         </section>
         <section id="sec-3">
             <span class="material-symbols-outlined" id="close">close</span>
-            <h1>Add New Contact</h1>
+            <h1>Ajouter Nouveau Contact</h1>
             <form id="addContactForm" action="ajax.php" method="POST">
-                <label for="first_name">First Name:
+                <label for="first_name">Prénom:
                     <input type="text" id="first_name" name="first_name" required>
                 </label>
 
-                <label for="last_name">Last Name:
+                <label for="last_name">Nom:
                     <input type="text" id="last_name" name="last_name" required>
                 </label>
 
-                <label for="phone">Phone:
+                <label for="phone">Téléphone:
                     <input type="text" id="phone" name="phone" required>
                 </label>
 
@@ -84,11 +84,11 @@
                     <input type="email" id="email" name="email" required>
                 </label>
 
-                <label for="address">Address:
+                <label for="address">Addresse:
                     <input type="text" id="address" name="address" required>
                 </label>
 
-                <label for="category_id">Category:
+                <label for="category_id">Categorie:
                     <select id="category_id" name="category_id" required></select>
                 </label>
                 <div class="button">
@@ -102,17 +102,17 @@
             <h1>Détails du Contact</h1>
             <div class="container-contact">
                 <div class="contact-details-item">
-                    <p>First Name:</p>
+                    <p>Prénom:</p>
                     <span id="first_name-details"></span>
                 </div>
 
                 <div class="contact-details-item">
-                    <p>Last Name:</p>
+                    <p>Nom:</p>
                     <span id="last_name-details"></span>
                 </div>
 
                 <div class="contact-details-item">
-                    <p>Phone:</p>
+                    <p>Téléphone:</p>
                     <span id="phone-details"></span>
                 </div>
 
@@ -122,12 +122,12 @@
                 </div>
 
                 <div class="contact-details-item">
-                    <p>Address:</p>
+                    <p>Addresse:</p>
                     <span id="address-details"></span>
                 </div>
 
                 <div class="contact-details-item">
-                    <p>Category:</p>
+                    <p>Categorie:</p>
                     <span id="category_id-details"></span>
                 </div>
 
