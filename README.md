@@ -55,6 +55,5 @@ The Contacts Management System is a web application that allows users to manage 
 ## Contributors
 
 - [Modou Aicha Diop](https://github.com/modouaicha023)
----
 
-Make sure to replace placeholders such as "your-username," "your_database_name," etc., with the appropriate information for your project. Additionally, include any specific instructions or considerations relevant to your project.
+## Test the application online ----> https://sama-contacts.000webhostapp.com/
