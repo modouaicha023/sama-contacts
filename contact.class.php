@@ -173,6 +173,28 @@ class Contact
             return false;
         }
     }
+
+
+    public function getCategoryCounts()
+{
+    try {
+        $query = "SELECT category.id, category.name, COUNT(contact.id) AS count
+                  FROM category
+                  LEFT JOIN contact ON category.id = contact.category_id
+                  GROUP BY category.id, category.name";
+
+        $request = $this->connexion->prepare($query);
+        $request->execute();
+
+        $categoryCounts = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $categoryCounts;
+
+    } catch (PDOException $pe) {
+        echo "Error: " . $pe->getMessage();
+        return [];
+    }
+}
+
 }
 
 ?>

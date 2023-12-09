@@ -67,6 +67,9 @@ $(document).ready(function () {
     $('#close-details').on('click', function () {
         $('#sec-4').css('display', 'none');
     });
+    $("#cancel-btc-details").on('click', function () {
+        $('#sec-4').css('display', 'none');
+    });
 
 
     $('#addContactForm').on('submit', function (e) {
@@ -82,7 +85,9 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     $('#addContactForm')[0].reset();
                     table.ajax.reload();
+                    updateCategoryCounts();
                     $('#sec-3').css('display', 'none');
+
 
                 } else {
                     alert(response.message);
@@ -145,6 +150,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status === 'success') {
                     table.ajax.reload();
+                    updateCategoryCounts();
                     $('#sec-4').css('display', 'none');
                     console.log("atfer");
                     console.log(formDataUpdate);
@@ -158,7 +164,36 @@ $(document).ready(function () {
         });
 
     }
-
+    function updateCategoryCounts() {
+        $.ajax({
+            url: 'ajax.php',
+            type: 'GET',
+            data: { action: 'getCategoryCounts' },
+            dataType: 'json',
+            success: function (counts) {
+                const menu = $('#menu');
+    
+                // Clear existing items
+                menu.empty();
+    
+                counts.forEach(function (category) {
+                    const listItem = $('<li>');
+                    const link = $('<a>', { href: '#' }).text(category.name);
+                    const countSpan = $('<span>').text(category.count + '-contacts');
+    
+                    listItem.append(link);
+                    listItem.append(countSpan);
+                    menu.append(listItem);
+                });
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+    
+    updateCategoryCounts();
+    
 
 
 });

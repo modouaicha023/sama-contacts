@@ -38,13 +38,6 @@
         <section id="sec-1">
             <h1>Listes of Contacts</h1>
             <div class="container-add-filter">
-                <!-- <form action="">
-                    <select name="filter" id="filter">
-                        <option value="last_name">Nom</option>
-                        <option value="first_name">Prénom</option>
-                        <option value="category">Catégorie</option>
-                    </select>
-                </form> -->
                 <button type="button" id="add-btn">
                     <span class="material-symbols-outlined">person_add</span>
                     Ajouter Contact
@@ -155,24 +148,7 @@
             Category
         </h2>
         <nav>
-            <ul>
-                <li>
-                    <a href="#">Tout les Contacts</a>
-                    <span>0-contacts</span>
-                </li>
-                <li><a href="#">Clients</a>
-                    <span>0-contacts</span>
-                </li>
-                <li><a href="#">Companies</a>
-                    <span>0-contacts</span>
-                </li>
-                <li><a href="#">Personals</a>
-                    <span>0-contacts</span>
-                </li>
-                <li><a href="#">Autres</a>
-                    <span>0-contacts</span>
-                </li>
-            </ul>
+            <ul id="menu"></ul>
         </nav>
     </aside>
 

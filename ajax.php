@@ -50,6 +50,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
+if ($_GET['action'] == 'getCategoryCounts') {
+    $categoryCounts = $contacts->getCategoryCounts();
+    header('Content-Type: application/json');
+    echo json_encode($categoryCounts);
+    exit;
+}
+
 if ($_GET['action'] == 'getCategories') {
     $categories = $contacts->getAllCategories();
     header('Content-Type: application/json');
